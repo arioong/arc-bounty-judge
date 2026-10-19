@@ -11,10 +11,7 @@ export default defineConfig({
       production: {
         version: "0.8.24",
         settings: {
-          optimizer: {
-            enabled: true,
-            runs: 200,
-          },
+          optimizer: { enabled: true, runs: 200 },
         },
       },
     },
@@ -24,22 +21,14 @@ export default defineConfig({
       type: "edr-simulated",
       chainType: "l1",
     },
-    hardhatOp: {
-      type: "edr-simulated",
-      chainType: "op",
-    },
-    sepolia: {
+    // Arc Testnet: native gas token is USDC (18 decimals)
+    // Docs: https://docs.arc.io/arc/references/connect-to-arc
+    arcTestnet: {
       type: "http",
       chainType: "l1",
-      url: configVariable("SEPOLIA_RPC_URL"),
-      accounts: [configVariable("SEPOLIA_PRIVATE_KEY")],
-    },
-    ritual: {
-      type: "http",
-      chainType: "l1",
-      url: "https://rpc.ritualfoundation.org",
-      chainId: 1979,
-      accounts: [configVariable("DEPLOYER_PRIVATE_KEY")],
+      url: "https://rpc.testnet.arc.io",
+      chainId: 5042002,
+      accounts: [configVariable("ARC_DEPLOYER_PRIVATE_KEY")],
     },
   },
 });
